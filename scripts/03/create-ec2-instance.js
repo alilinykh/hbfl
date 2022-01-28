@@ -14,8 +14,8 @@ function sendCommand(command) {
 }
 
 // Declare local variables
-const sgName = "hamster_sg";
-const keyName = "hamster_key";
+const sgName = "hamster_sg_bitnami";
+const keyName = "hamster_key_bitnami";
 
 // Do all the things together
 async function execute() {
@@ -69,14 +69,14 @@ async function createKeyPair(keyName) {
 
 async function createInstance(sgName, keyName) {
   const params = {
-    ImageId: "ami-08e4e35cccc6189f4",
+    ImageId: "ami-0651c4e82f4167224",
     InstanceType: "t2.micro",
     KeyName: keyName,
     MaxCount: 1,
     MinCount: 1,
     SecurityGroups: [sgName],
     UserData:
-      "IyEvYmluL2Jhc2gKY3VybCAtLXNpbGVudCAtLWxvY2F0aW9uIGh0dHBzOi8vcnBtLm5vZGVzb3VyY2UuY29tL3NldHVwXzE2LnggfCBzdWRvIGJhc2ggLQpzdWRvIHl1bSBpbnN0YWxsIC15IG5vZGVqcwpzdWRvIHl1bSBpbnN0YWxsIC15IGdpdApjZCBob21lL2VjMi11c2VyCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vcnlhbm11cmFrYW1pL2hiZmwuZ2l0CmNkIGhiZmwKc3VkbyBzdQpucG0gaQpucG0gcnVuIHN0YXJ0",
+      "IyEvYmluL2Jhc2gKc3VkbyBhcHQtZ2V0IHVwZGF0ZQpzdWRvIGFwdC1nZXQgLXkgaW5zdGFsbCBnaXQKcm0gLXJmIC9ob21lL2JpdG5hbWkvaGJmbApnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL3J5YW5tdXJha2FtaS9oYmZsLmdpdCAvaG9tZS9iaXRuYW1pL2hiZmwKY2hvd24gLVIgYml0bmFtaTogL2hvbWUvYml0bmFtaS9oYmZsCmNkIC9ob21lL2JpdG5hbWkvaGJmbApzdWRvIG5wbSBjaQpzdWRvIG5wbSBydW4gc3RhcnQ=",
   };
   const command = new RunInstancesCommand(params);
   return sendCommand(command);
